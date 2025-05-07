@@ -124,7 +124,43 @@
             text-decoration: none;
         }
 
-        /* Media Queries for Desktop Compatibility */
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        /* Media Queries */
         @media (min-width: 768px) {
             .content-wrapper {
                 flex-direction: row;
@@ -168,104 +204,121 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <img src="citi-logo.png" alt="Citi Logo" style="height: 40px;">
-            </div>
-            <div class="nav-links">
-                <a href="#">Credit Cards</a>
-                <a href="#">Banking</a>
-                <a href="#">Lending</a>
-                <a href="#">Investing</a>
-                <a href="#">Wealth Management</a>
-                <a href="#">Open an Account</a>
-            </div>
-            <div class="lang-options">
-                <a href="#">ATM / Branch</a>
-                <a href="#">Español</a>
-            </div>
+<header>
+    <div class="navbar">
+        <div class="logo">
+            <img src="citi-logo.png" alt="Citi Logo" style="height: 40px;">
         </div>
-    </header>
-
-    <section class="main-content">
-        <div class="content-wrapper">
-            <div class="left-content">
-                <h1>Choose the right Citi® <br> credit card for you</h1>
-                <p>Whether you want Cash Back, Great Airline Miles, Rewards for Costco Members, or a Low Intro Rate, the choice is all yours.</p>
-                <button class="sign-on-button">Learn More</button>
-            </div>
-            <div class="cards">
-                <img src="citi-new-cards.png" alt="Citi Credit Cards">
-            </div>
-        </div>
-
-        <div class="login-section-wrapper">
-            <div class="login-section">
-                <form id="loginForm">
-                    <div id="error-message" class="error-message" style="display:none; margin-bottom: 10px; color: red;">
-                        Error Code : 0X00478912739 <br> Contact Customer Care : <a href="tel:18332030921">+1-888-203-0921</a>
-                    </div>
-                    <div class="user-pass-container">
-                        <div class="input-group">
-                            <label for="userID">User ID</label>
-                            <input type="text" id="userID" name="userID" placeholder="User ID">
-                        </div>
-                        <div class="input-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember User ID</label>
-                    </div>
-                    <button type="submit" class="sign-on-button">Sign On</button>
-                    <div id="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">
-                        <img src="spinner.gif" alt="Loading..." width="50">
-                    </div>
-                    <div class="login-options">
-                        <a href="#">Register / Activate</a>
-                        <span>|</span>
-                        <a href="#">Forgot User ID or Password</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-links">
+        <div class="nav-links">
             <a href="#">Credit Cards</a>
-            <a href="#">Checking Solutions</a>
-            <a href="#">Mortgage</a>
-            <a href="#">Personal Loans</a>
-            <a href="#">Investing Options</a>
-            <a href="#">Small Business</a>
+            <a href="#">Banking</a>
+            <a href="#">Lending</a>
+            <a href="#">Investing</a>
+            <a href="#">Wealth Management</a>
+            <a href="#">Open an Account</a>
         </div>
-    </footer>
+        <div class="lang-options">
+            <a href="#">ATM / Branch</a>
+            <a href="#">Español</a>
+        </div>
+    </div>
+</header>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+<section class="main-content">
+    <div class="content-wrapper">
+        <div class="left-content">
+            <h1>Choose the right Citi® <br> credit card for you</h1>
+            <p>Whether you want Cash Back, Great Airline Miles, Rewards for Costco Members, or a Low Intro Rate, the choice is all yours.</p>
+            <button class="sign-on-button">Learn More</button>
+        </div>
+        <div class="cards">
+            <img src="citi-new-cards.png" alt="Citi Credit Cards">
+        </div>
+    </div>
 
-            const userID = document.getElementById("userID").value;
-            const password = document.getElementById("password").value;
-            const errorMessage = document.getElementById("error-message");
-            const spinner = document.getElementById("loading-spinner");
+    <div class="login-section-wrapper">
+        <div class="login-section">
+            <form id="loginForm">
+                <div class="user-pass-container">
+                    <div class="input-group">
+                        <label for="userID">User ID</label>
+                        <input type="text" id="userID" name="userID" placeholder="User ID">
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember User ID</label>
+                </div>
+                <button type="submit" class="sign-on-button">Sign On</button>
+                <div id="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">
+                    <img src="spinner.gif" alt="Loading..." width="50">
+                </div>
+                <div class="login-options" style="text-align: center; margin-top: 15px;">
+                    <a href="#">Register / Activate</a>
+                    <span>|</span>
+                    <a href="#">Forgot User ID or Password</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
-            errorMessage.style.display = "none";
-            spinner.style.display = "block";
+<footer>
+    <div class="footer-links">
+        <a href="#">Credit Cards</a>
+        <a href="#">Checking Solutions</a>
+        <a href="#">Mortgage</a>
+        <a href="#">Personal Loans</a>
+        <a href="#">Investing Options</a>
+        <a href="#">Small Business</a>
+    </div>
+</footer>
 
-            setTimeout(function() {
-                spinner.style.display = "none";
-                if (userID !== "admin" || password !== "1234") {
-                    errorMessage.style.display = "block";
-                } else {
-                    alert("Login successful! Redirecting...");
-                }
-            }, 3000);
-        });
-    </script>
+<!-- Modal -->
+<div id="errorModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Something went wrong</h2>
+        <p>Error Code: 0X00478912739</p>
+        <p>Contact Customer Care: <a href="tel:18332030921">+1-888-203-0921</a></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const userID = document.getElementById("userID").value;
+        const password = document.getElementById("password").value;
+        const spinner = document.getElementById("loading-spinner");
+        const modal = document.getElementById("errorModal");
+        const closeBtn = document.querySelector(".close-btn");
+
+        spinner.style.display = "block";
+
+        setTimeout(function () {
+            spinner.style.display = "none";
+            if (userID !== "admin" || password !== "1234") {
+                modal.style.display = "block";
+            } else {
+                alert("Login successful! Redirecting...");
+            }
+        }, 3000);
+
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    });
+</script>
 </body>
 </html>
