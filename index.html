@@ -164,6 +164,15 @@
       user-select: none;
     }
 
+    #loading-spinner {
+      display: none;
+      position: fixed; /* Fix the spinner to the screen */
+      top: 50%; /* Position it vertically in the middle */
+      left: 50%; /* Position it horizontally in the middle */
+      transform: translate(-50%, -50%); /* Adjust the position to make it exactly centered */
+      z-index: 999; /* Ensure the spinner stays on top of other content */
+    }
+
     @media (min-width: 768px) {
       .content-wrapper {
         flex-direction: row;
@@ -240,8 +249,8 @@
             </div>
             <button type="submit" class="sign-on-button">Sign On</button>
             <div id="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">
-  <img src="spinner.gif" alt="Loading..." style="width: 100px; height: 100px;">
-</div>
+              <img src="spinner.gif" alt="Loading..." style="width: 100px; height: 100px;">
+            </div>
             <div class="login-options" style="text-align: center; margin-top: 15px;">
               <a href="#">Register / Activate</a>
               <span>|</span>
