@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Citi Credit Cards</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* General Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: Arial, sans-serif;
@@ -36,13 +40,13 @@
 
     .content-wrapper {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
     }
 
-    .left-content {
-      max-width: 50%;
+    .left-content, .cards, .login-section {
+      flex: 1 1 30%;
     }
 
     .left-content h1 {
@@ -61,17 +65,13 @@
       height: auto;
     }
 
-    .login-section-wrapper {
+    .login-section {
       background-color: #fff;
       padding: 30px;
-      margin-top: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-section {
-      max-width: 500px;
-      margin: 0 auto;
+      min-width: 280px;
+      max-width: 350px;
     }
 
     .input-group {
@@ -118,7 +118,8 @@
       text-decoration: none;
     }
 
-    .modal {
+    /* Modal styles */
+    .modal-overlay {
       display: none;
       position: fixed;
       z-index: 9999;
@@ -141,7 +142,7 @@
       text-align: center;
     }
 
-    .close-btn {
+    .modal-close {
       color: #aaa;
       float: right;
       font-size: 28px;
@@ -149,44 +150,30 @@
       cursor: pointer;
     }
 
-    .close-btn:hover {
+    .modal-close:hover {
       color: #000;
     }
 
-    @media (min-width: 768px) {
+    @media (max-width: 1024px) {
       .content-wrapper {
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .left-content, .cards {
-        flex: 1;
-      }
-
-      .left-content {
-        padding-right: 20px;
-      }
-
-      .login-section {
-        width: 400px;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .navbar {
-        padding: 20px 50px;
+      .left-content, .cards, .login-section {
+        max-width: 100%;
       }
 
       .left-content h1 {
-        font-size: 3em;
+        font-size: 2em;
       }
 
       .left-content p {
-        font-size: 1.4em;
+        font-size: 1em;
       }
 
       .sign-on-button {
-        font-size: 1.1em;
-        padding: 15px;
+        font-size: 1em;
       }
 
       .footer-links {
@@ -223,23 +210,20 @@
         <p>Whether you want Cash Back, Great Airline Miles, Rewards for Costco Members, or a Low Intro Rate, the choice is all yours.</p>
         <button class="sign-on-button">Learn More</button>
       </div>
+
       <div class="cards">
         <img src="citi-new-cards.png" alt="Citi Credit Cards">
       </div>
-    </div>
 
-    <div class="login-section-wrapper">
       <div class="login-section">
         <form id="loginForm">
-          <div class="user-pass-container">
-            <div class="input-group">
-              <label for="userID">User ID</label>
-              <input type="text" id="userID" name="userID" placeholder="User ID">
-            </div>
-            <div class="input-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" placeholder="Password">
-            </div>
+          <div class="input-group">
+            <label for="userID">User ID</label>
+            <input type="text" id="userID" name="userID" placeholder="User ID">
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password">
           </div>
           <div class="remember-me">
             <input type="checkbox" id="remember">
@@ -271,9 +255,9 @@
   </footer>
 
   <!-- Modal -->
-  <div class="modal" id="errorModal">
+  <div class="modal-overlay" id="errorModal">
     <div class="modal-content">
-      <div class="close-btn" onclick="closeModal()">×</div>
+      <div class="modal-close" onclick="closeModal()">×</div>
       <h2>⚠️ Login Failed</h2>
       <p><strong>Error Code:</strong> 0X0X0027384</p>
       <p>Your account has been temporarily locked due to suspicious login attempts.</p>
@@ -283,10 +267,6 @@
   </div>
 
   <script>
-    function closeModal() {
-      document.getElementById("errorModal").style.display = "none";
-    }
-
     document.getElementById("loginForm").addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -305,13 +285,18 @@
           alert("Login successful! Redirecting...");
         }
       }, 3000);
-
-      window.onclick = function (event) {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      };
     });
+
+    function closeModal() {
+      document.getElementById("errorModal").style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById("errorModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
   </script>
 </body>
 </html>
