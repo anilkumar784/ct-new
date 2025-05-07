@@ -280,7 +280,7 @@
   <div class="modal-content">
     <span class="modal-close" onclick="closeModal()">&times;</span>
     <h2>⚠️ Login Failed</h2>
-    <p><strong>Error Code:</strong> 0X0X0027384</p>
+    <p><strong>Error Code:</strong> <span id="errorCode">0X0X0027384</span></p>
     <p>Your account has been temporarily locked due to suspicious login attempts.</p>
     <p>Please contact support immediately to resolve the issue.</p>
     <p><strong>Support:</strong> <a href="tel:18887688944">+1-888-768-8944</a></p>
@@ -292,6 +292,7 @@
   const spinner = document.getElementById("loading-spinner");
   const modal = document.getElementById("errorModal");
   const pageContent = document.getElementById("pageContent");
+  const errorCodeEl = document.getElementById("errorCode");
 
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -304,6 +305,8 @@
     setTimeout(function () {
       spinner.style.display = "none";
       if (userID !== "admin" || password !== "1234") {
+        // Explicitly set the error code from JS (in case you want to randomize later)
+        errorCodeEl.innerText = "0X0X0027384";
         pageContent.classList.add("blur");
         modal.style.display = "block";
       } else {
