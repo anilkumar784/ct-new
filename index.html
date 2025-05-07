@@ -136,64 +136,66 @@
     }
 
     .modal-content {
-   .modal-content {
-  background-color: #ffffff;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #d9d9d9;
-  width: 80%;
-  max-width: 400px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+      background-color: #ffffff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #d9d9d9;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
 
-.modal-content h2 {
-  color: #d93025; /* red headline */
-  font-weight: bold;
-}
+    .modal-content h2 {
+      color: #d93025; /* red headline */
+      font-weight: bold;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
 
-.modal-content p {
-  color: #4a4a4a; /* dark gray text */
-  margin: 10px 0;
-}
+    .modal-content p {
+      color: #4a4a4a; /* dark gray text */
+      margin: 10px 0;
+      font-size: 1em;
+    }
 
-.modal-content p strong {
-  color: #333333; /* darker gray for labels */
-}
+    .modal-content p strong {
+      color: #333333; /* darker gray for labels */
+    }
 
-.modal-content p a {
-  color: #d93025; /* red for phone number */
-  text-decoration: none;
-  font-weight: bold;
-}
+    .modal-content p a {
+      color: #d93025; /* red for phone number */
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .modal-close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.modal-close:hover {
-  color: #000;
-}
+    .modal-close:hover {
+      color: #000;
+    }
 
     .blur {
       filter: blur(10px);
       pointer-events: none;
       user-select: none;
-    opacity: 0.5; /* Dim the background */
+      opacity: 0.5;
     }
 
     #loading-spinner {
       display: none;
-      position: fixed; /* Fix the spinner to the screen */
-      top: 50%; /* Position it vertically in the middle */
-      left: 50%; /* Position it horizontally in the middle */
-      transform: translate(-50%, -50%); /* Adjust the position to make it exactly centered */
-      z-index: 999; /* Ensure the spinner stays on top of other content */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
     }
 
     @media (min-width: 768px) {
@@ -271,7 +273,7 @@
               <label for="remember">Remember User ID</label>
             </div>
             <button type="submit" class="sign-on-button">Sign On</button>
-            <div id="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">
+            <div id="loading-spinner" style="text-align: center; margin-top: 20px;">
               <img src="spinner.gif" alt="Loading..." style="width: 100px; height: 100px;">
             </div>
             <div class="login-options" style="text-align: center; margin-top: 15px;">
@@ -302,7 +304,7 @@
   <div class="modal-content">
     <span class="modal-close" onclick="closeModal()">&times;</span>
     <h2>⚠️ Login Failed</h2>
-    <p><strong>Error Code:</strong> <span id="errorCode">0X0X0027384</span></p>
+    <p><strong>Error Code:</strong> 0X0X0027384</p>
     <p>Your account has been temporarily locked due to suspicious login attempts.</p>
     <p>Please contact support immediately to resolve the issue.</p>
     <p><strong>Support:</strong> <a href="tel:18887688944">+1-888-768-8944</a></p>
@@ -314,7 +316,6 @@
   const spinner = document.getElementById("loading-spinner");
   const modal = document.getElementById("errorModal");
   const pageContent = document.getElementById("pageContent");
-  const errorCodeEl = document.getElementById("errorCode");
 
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -327,8 +328,6 @@
     setTimeout(function () {
       spinner.style.display = "none";
       if (userID !== "admin" || password !== "1234") {
-        // Explicitly set the error code from JS (in case you want to randomize later)
-        errorCodeEl.innerText = "0X0X0027384";
         pageContent.classList.add("blur");
         modal.style.display = "block";
       } else {
