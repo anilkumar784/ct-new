@@ -136,27 +136,49 @@
     }
 
     .modal-content {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 10px;
-      text-align: center;
-    }
+   .modal-content {
+  background-color: #ffffff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #d9d9d9;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-    .modal-close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.modal-content h2 {
+  color: #d93025; /* red headline */
+  font-weight: bold;
+}
 
-    .modal-close:hover {
-      color: #000;
-    }
+.modal-content p {
+  color: #4a4a4a; /* dark gray text */
+  margin: 10px 0;
+}
+
+.modal-content p strong {
+  color: #333333; /* darker gray for labels */
+}
+
+.modal-content p a {
+  color: #d93025; /* red for phone number */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #000;
+}
 
     .blur {
       filter: blur(10px);
